@@ -22,3 +22,6 @@ awk '
     for (i=8; i<=NF; i++) filename = filename (i==8 ? "" : " ") $i; # ファイル名を連結
     print $1,$2,$3,$4,$5,$6,filename # 必要な情報を出力
   }' >> $output_file
+
+# ファイル名順にソートして同じファイルに保存
+sort -t, -k7,7 -o "$output_file" "$output_file"
