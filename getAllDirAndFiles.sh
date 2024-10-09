@@ -23,5 +23,5 @@ awk '
     print $1,$2,$3,$4,$5,$6,filename # 必要な情報を出力
   }' >> $output_file
 
-# ファイル名順にソートして同じファイルに保存
-sort -t, -k7,7 -o "$output_file" "$output_file"
+# ファイル名順に外部ソートして同じファイルに保存
+sort -t, -k7,7 --buffer-size=20% --temporary-directory=/tmp -o "$output_file" "$output_file"
