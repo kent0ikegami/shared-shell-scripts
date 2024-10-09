@@ -22,5 +22,3 @@ awk '
     for (i=8; i<=NF; i++) filename = filename (i==8 ? "" : " ") $i; # ファイル名を連結
     print $1,$2,$3,$4,$5,$6,filename # 必要な情報を出力
   }' >> $output_file
-
-
