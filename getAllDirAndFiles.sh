@@ -6,6 +6,7 @@ mkdir -p $output_dir
 
 # ファイル名
 date_str=$(date +"%Y%m%d_%H%M%S")
+unsorted_output_file="$output_dir/unsorted_output_$date_str.csv"
 output_file="$output_dir/output_$date_str.csv"
 
 # 情報の取得先
@@ -21,7 +22,7 @@ awk '
     filename="";
     for (i=8; i<=NF; i++) filename = filename (i==8 ? "" : " ") $i; # ファイル名を連結
     print $1,$2,$3,$4,$5,$6,filename # 必要な情報を出力
-  }' >> $output_file
+  }' >> $unsorted_output_file
 
 # ファイル名順に外部ソートして同じファイルに保存
-sort -t, -k7,7 --buffer-size=20% --temporary-directory=/tmp -o "$output_file" "$output_file"
+sort -t, -k7,7 --buffer-size=20% --temporary-directory=/tmp -o "$output_file" "$unsorted_output_file"
