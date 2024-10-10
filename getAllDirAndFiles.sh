@@ -14,7 +14,7 @@ input_dirs=("/home/username/hoge" "/home/username/fuga")
 
 # 情報の取得とCSV出力
 find "${input_dirs[@]}" \
-  -exec ls -ld --time-style="+%Y-%m-%d %H:%M:%S" {} + | \
+  -exec ls -ldb --time-style="+%Y-%m-%d %H:%M:%S" {} + | \
 awk '
   BEGIN {OFS=","}
   {
